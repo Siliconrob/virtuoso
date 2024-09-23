@@ -26,6 +26,7 @@ const SearchResult: React.FC<APISearchSummary> = (results: APISearchSummary) => 
   const renderSearchResults = (currentPage) => {
     if (currentPage.ids.length !== 0) {
       const displayPage = getCurrentPage(search.objectIDs, currentPage.currentPage, currentPage.itemsPerPage);
+      // @ts-ignore
       return displayPage.ids.map((z: ItemDetails) => <SearchResultItem data={z} key={z}/>);
     }
     return null;

@@ -30,12 +30,13 @@ export async function submitSearch(modified: Date, testMode: boolean = false) : 
   const searchData = {
     metadataDate: getDateOnly(modified),
   }
+  // @ts-ignore
   const searchParams = new URLSearchParams(searchData).toString();
   const response = await fetch(`${API_V1_BASE_URL}?${searchParams}`);
   return await response.json();
 }
 
-export function getDateOnly(inputDate: Date) {
+export function getDateOnly(inputDate: Date) : string | undefined | null {
   return inputDate != null
     ? inputDate.toISOString().split("T").shift()
     : null;
