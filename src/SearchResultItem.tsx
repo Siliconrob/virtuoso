@@ -4,7 +4,8 @@ import {getItemDetails} from "./Search.ts";
 import ModalImage from "react-modal-image";
 
 const SearchResultItem : React.FC<number> = (data: number) => {
-  const id = data.data;
+  // @ts-ignore
+  const id = data.data as number;
   const [item, setItem] = useState(new ItemDetails());
   const renderDetail = (fieldValue: string, fieldName: string) => {
     return (fieldValue !== "" ? <div className="text-left"><span><b>{fieldName}:</b> {fieldValue}</span></div> : null)
@@ -21,7 +22,8 @@ const SearchResultItem : React.FC<number> = (data: number) => {
   const renderTags = (tags: Array<object>) => {
     const toRender = (tags || []).slice(0, 3);
     if (toRender.length > 0) {
-      return <div className="text-left"><span><b>Tags:</b> {toRender.map(z => z.term || "").join(", ")}</span></div>
+      // @ts-ignore
+      return <div className="text-left"><span><b>Tags:</b> {toRender.map(z => z?.term || "").join(", ")}</span></div>
     }
     return null;
   }  

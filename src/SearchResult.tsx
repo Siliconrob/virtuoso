@@ -19,6 +19,7 @@ function setInitialPage(objectIds: Array<number>) {
 }
 
 const SearchResult: React.FC<APISearchSummary> = (results: APISearchSummary) => {
+  // @ts-ignore
   const search = results.data as APISearchSummary;
   const [pagedResults, setPagedResults] = useState(setInitialPage(search.objectIDs));
 
@@ -32,7 +33,7 @@ const SearchResult: React.FC<APISearchSummary> = (results: APISearchSummary) => 
   
   return (
     <div>
-      <button className="pad-items" onClick={async (e) => {
+      <button className="pad-items" onClick={async () => {
         const pageNumber = pagedResults.currentPage - 1;
         if (pageNumber < 1) {
           toast.info('No previous page found');
@@ -46,7 +47,7 @@ const SearchResult: React.FC<APISearchSummary> = (results: APISearchSummary) => 
         setPagedResults(previousPage);
       }}>Previous Page
       </button>
-      <button className="pad-items" onClick={async (e) => {
+      <button className="pad-items" onClick={async () => {
         const pageNumber = pagedResults.currentPage + 1;
         if (pageNumber > Math.ceil(search.total / pagedResults.itemsPerPage)) {
           toast.info('No next page found');
