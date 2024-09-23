@@ -27,6 +27,10 @@ VITE_APP_NODE_ENV=<fill in a value other than production for testing>
 - [Node.js](https://nodejs.org/en/about/) Please install at least Node.js version `v22.1.0` and `npm`.
 - Run `npm install` to initialize all the dependencies
 
+## Tests
+
+- Add a lab test method for the API validation, flipping to an environment variable above to something not production shows and pass test data
+
 ## Render Deployment
 
 - Signup for a free [Render](https://dashboard.render.com/register) account.  You won't regret it :)
