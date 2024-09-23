@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+This is an interview application built for [Virtuoso](https://www.virtuoso.com/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to this sample application that leverages the API endpoints against [The Metropolitan Museum of Art Collection API](https://metmuseum.github.io/).
 
-Currently, two official plugins are available:
+## Demo use
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Flow
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Development
 
-- Configure the top-level `parserOptions` property like this:
+This project was built using the default Vite React template.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Make sure to set all your [.env](https://www.baeldung.com/linux/environment-variables-file) variables.
+- The `.env` file in this repository has the necessary keys you must fill out
 ```
+VITE_APP_NODE_ENV=<fill in a value other than production for testing>
+``` 
+- [Node.js](https://nodejs.org/en/about/) Please install at least Node.js version `v22.1.0` and `npm`.
+- Run `npm install` to initialize all the dependencies
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Render Deployment
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Signup for a free [Render](https://dashboard.render.com/register) account.  You won't regret it :)
+- Connect your [GitHub](https://docs.render.com/github) account
+- Choose the `Static Site` [option](https://docs.render.com/static-sites)
+- Setup a name
+- Use the defaults and set the `Build Command` to `npm install; npm run build`
+- Make sure to copy your data from your `.env` file you setup earlier into the `Environment` [settings](https://docs.render.com/configure-environment-variables)
+- Trigger a manual deployment
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
