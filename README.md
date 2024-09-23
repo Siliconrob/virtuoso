@@ -6,8 +6,14 @@ Welcome to this sample application that leverages the API endpoints against [The
 
 ## Demo use
 
+![react_app_viewer](https://github.com/user-attachments/assets/cc5e677f-abe8-4aad-8ceb-1f41fa4f9794)
+
 ## Flow
 
+- Application loads the data from the collection by meta date changed after `https://collectionapi.metmuseum.org/public/collection/v1/objects?metadataDate=2024-09-01`
+- Data is then sent to search components
+- Search result controls the ids and paging of the results
+- Search result item loads the data from the id and displays the contents
 
 ## Development
 
