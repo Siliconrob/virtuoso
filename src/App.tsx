@@ -9,6 +9,7 @@ import {getDateOnly, submitSearch} from "./Search.ts";
 function defaultDate() {
   const startDate = new Date();
   const milliseconds = 7 * (24 * 60) * (60 * 1000);
+  // @ts-ignore
   return new Date(startDate - milliseconds);
 }
 
@@ -49,7 +50,7 @@ function App() {
         <h1>Metropolitan Museum of Art Viewer</h1>
         <div className="row">
           <label htmlFor="modifiedFilter">Changed after</label>
-          <input id="modifiedFilter" type="date" value={getDateOnly(modifiedDate)} onChange={async (e) => {
+          <input id="modifiedFilter" type="date" value={getDateOnly(modifiedDate) as string} onChange={async (e) => {
             const newDate = new Date(e.target.value as unknown as string);
             const details = await getSearchResults(newDate);
             setModifiedDate(newDate);
@@ -57,7 +58,7 @@ function App() {
           }}/>
         </div>
         <div>
-          <SearchResult data={searchResults} key={getDateOnly(modifiedDate)}/>
+          <SearchResult data={searchResults as APISearchSummary} key={getDateOnly(modifiedDate)}/>
         </div>
       </>);
   }

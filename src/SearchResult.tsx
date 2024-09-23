@@ -23,7 +23,7 @@ const SearchResult: React.FC<APISearchSummary> = (results: APISearchSummary) => 
   const search = results.data as APISearchSummary;
   const [pagedResults, setPagedResults] = useState(setInitialPage(search.objectIDs));
 
-  const renderSearchResults = (currentPage) => {
+  const renderSearchResults = (currentPage: PagedResult) => {
     if (currentPage.ids.length !== 0) {
       const displayPage = getCurrentPage(search.objectIDs, currentPage.currentPage, currentPage.itemsPerPage);
       // @ts-ignore
