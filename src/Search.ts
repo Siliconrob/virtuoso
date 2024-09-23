@@ -4,6 +4,10 @@ import testValues from "../test/data";
 
 const API_V1_BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects";
 
+export function isProduction() {
+  return (import.meta.env.VITE_APP_NODE_ENV || "production" !== "production");
+}
+
 export async function getItemDetails(objectId: number, testMode: boolean = false) {
   if (testMode) {
     return testValues.item;

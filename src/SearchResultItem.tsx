@@ -1,6 +1,6 @@
 ﻿import React, {useEffect, useState} from "react";
 import {ItemDetails} from "./PagedResults.ts";
-import {getItemDetails} from "./Search.ts";
+import {getItemDetails, isProduction} from "./Search.ts";
 import ModalImage from "react-modal-image";
 
 const SearchResultItem : React.FC<number> = (data: number) => {
@@ -13,7 +13,7 @@ const SearchResultItem : React.FC<number> = (data: number) => {
 
   useEffect(() => {
     async function fetchData(objectId: number) {
-      const details = await getItemDetails(objectId)
+      const details = await getItemDetails(objectId, isProduction())
       setItem(details);
     }
     fetchData(id);

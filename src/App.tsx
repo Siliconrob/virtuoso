@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 import SearchResult from "./SearchResult.tsx";
 import {APISearchSummary} from "./PagedResults.ts";
-import {getDateOnly, submitSearch} from "./Search.ts";
+import {getDateOnly, isProduction, submitSearch} from "./Search.ts";
 
 function defaultDate() {
   const startDate = new Date();
@@ -28,7 +28,7 @@ function App() {
   const getSearchResults = async (searchDate: Date): Promise<APISearchSummary> => {
     const msgId = toast.info('Searching', {autoClose: 1250});
     try {
-      const details = await submitSearch(searchDate);
+      const details = await submitSearch(searchDate, isProduction());
       toast.dismiss(msgId);
       return details;
     } catch (error) {
