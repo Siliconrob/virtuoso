@@ -20,7 +20,7 @@ function setInitialPage(objectIds: Array<number>) {
 
 const SearchResult: React.FC<APISearchSummary> = (results: APISearchSummary) => {
   // @ts-ignore
-  const search = results.data as APISearchSummary;
+  const search = results as APISearchSummary;
   const [pagedResults, setPagedResults] = useState(setInitialPage(search.objectIDs));
 
   const renderSearchResults = (currentPage: PagedResult) => {

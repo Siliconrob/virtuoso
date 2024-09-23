@@ -58,7 +58,7 @@ function App() {
           }}/>
         </div>
         <div>
-          <SearchResult data={searchResults as APISearchSummary} key={getDateOnly(modifiedDate)}/>
+          <SearchResult {...searchResults} key={getDateOnly(modifiedDate)}/>
         </div>
       </>);
   }
