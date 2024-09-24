@@ -26,7 +26,17 @@ const SearchResultItem : React.FC<number> = (data: number) => {
       return <div className="text-left"><span><b>Tags:</b> {toRender.map(z => z?.term || "").join(", ")}</span></div>
     }
     return null;
-  }  
+  }
+  
+  const getImagePreview = (smallImageUrl: string, largeImageUrl: string): string => {
+    if (smallImageUrl === "" || smallImageUrl === null) {
+      if (largeImageUrl === "" || largeImageUrl === null) {
+        return "../src/assets/no-image.svg";
+      }
+      return largeImageUrl;
+    }
+    return smallImageUrl;
+  }
   
   return (
     <>
@@ -34,7 +44,7 @@ const SearchResultItem : React.FC<number> = (data: number) => {
         <div className="flex-child">
           <ModalImage
             className="preview-image"
-            small={item.primaryImageSmall}
+            small={getImagePreview(item.primaryImageSmall, item.primaryImage)}
             large={item.primaryImage}
             alt={item.title}
           />
