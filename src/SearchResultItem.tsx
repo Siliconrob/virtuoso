@@ -31,7 +31,7 @@ const SearchResultItem : React.FC<number> = (data: number) => {
   const getImagePreview = (smallImageUrl: string, largeImageUrl: string): string => {
     if (smallImageUrl === "" || smallImageUrl === null) {
       if (largeImageUrl === "" || largeImageUrl === null) {
-        return "../src/assets/no-image.svg";
+        return "data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAzMiAzMiIgaWQ9Imljb24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiLz48ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPGcgaWQ9IlNWR1JlcG9faWNvbkNhcnJpZXIiPgo8ZGVmcz4KPHN0eWxlPi5jbHMtMXtmaWxsOm5vbmU7fTwvc3R5bGU+CjwvZGVmcz4KPHRpdGxlPm5vLWltYWdlPC90aXRsZT4KPHBhdGggZD0iTTMwLDMuNDE0MSwyOC41ODU5LDIsMiwyOC41ODU5LDMuNDE0MSwzMGwyLTJIMjZhMi4wMDI3LDIuMDAyNywwLDAsMCwyLTJWNS40MTQxWk0yNiwyNkg3LjQxNDFsNy43OTI5LTcuNzkzLDIuMzc4OCwyLjM3ODdhMiwyLDAsMCwwLDIuODI4NCwwTDIyLDE5bDQsMy45OTczWm0wLTUuODMxOC0yLjU4NTgtMi41ODU5YTIsMiwwLDAsMC0yLjgyODQsMEwxOSwxOS4xNjgybC0yLjM3Ny0yLjM3NzFMMjYsNy40MTQxWiIvPgo8cGF0aCBkPSJNNiwyMlYxOWw1LTQuOTk2NiwxLjM3MzMsMS4zNzMzLDEuNDE1OS0xLjQxNi0xLjM3NS0xLjM3NWEyLDIsMCwwLDAtMi44Mjg0LDBMNiwxNi4xNzE2VjZIMjJWNEg2QTIuMDAyLDIuMDAyLDAsMCwwLDQsNlYyMloiLz4KPHJlY3QgaWQ9Il9UcmFuc3BhcmVudF9SZWN0YW5nbGVfIiBkYXRhLW5hbWU9IiZsdDtUcmFuc3BhcmVudCBSZWN0YW5nbGUmZ3Q7IiBjbGFzcz0iY2xzLTEiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIvPgo8L2c+Cjwvc3ZnPg==";
       }
       return largeImageUrl;
     }
