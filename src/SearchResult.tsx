@@ -1,5 +1,5 @@
 ﻿import SearchResultItem from "./SearchResultItem";
-import {APISearchSummary, ItemDetails, PagedResult} from "./PagedResults.ts";
+import {APISearchSummary, PagedResult} from "./PagedResults.ts";
 import React, {useState} from "react";
 import {toast} from "react-toastify";
 
