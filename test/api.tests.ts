@@ -8,7 +8,7 @@ const expect = Code.expect;
 // @ts-ignore
 const lab = exports.lab = Lab.script();
 
-lab.test('gets ticket by id', async () => {
+lab.test('gets item by id', async () => {
   const expected = testValues.item; 
   const id = 1;
   const results = {
