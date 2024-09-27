@@ -6,7 +6,7 @@ export const dbSettings = Object.freeze({
   KeyStore: "actions"
 });
 
-export async function save(inputValue : any, id: any) : Promise<IDBValidKey | undefined> {
+export async function save(inputValue: unknown, id: number) : Promise<IDBValidKey | undefined> {
   try {
     const db = await openDB(dbSettings.Name, dbSettings.Version, {
       upgrade(db) {
@@ -24,7 +24,7 @@ export async function save(inputValue : any, id: any) : Promise<IDBValidKey | un
   }
 }
 
-export async function get(id: any) : Promise<any> {
+export async function get(id: number) : Promise<unknown> {
   try {
     const db = await openDB(dbSettings.Name, dbSettings.Version, {
       upgrade(db) {
