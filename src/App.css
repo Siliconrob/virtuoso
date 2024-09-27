@@ -48,6 +48,10 @@
   flex: 1;
 }
 
+.nice-border {
+  margin-right: 1rem;
+}
+
 .preview-image {
   object-fit: contain;
   height: 200px;

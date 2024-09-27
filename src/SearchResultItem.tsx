@@ -41,7 +41,7 @@ const SearchResultItem : React.FC<number> = (data: number) => {
   return (
     <>
       <div className="card flex-container">
-        <div className="flex-child">
+        <div className="flex-child nice-border">
           <ModalImage
             className="preview-image"
             small={getImagePreview(item.primaryImageSmall, item.primaryImage)}
