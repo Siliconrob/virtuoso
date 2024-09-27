@@ -4,7 +4,9 @@ import App from './App.tsx'
 import './index.css'
 import {initializeCache} from "./Cache.ts";
 
-await initializeCache();
+setTimeout(async () => {
+  await initializeCache();  
+}, 5)
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
