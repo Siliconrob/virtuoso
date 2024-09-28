@@ -16,7 +16,8 @@ async function getDB() : Promise<IDBPDatabase<unknown>>    {
 
 export async function save(inputValue: unknown, id: number) : Promise<IDBValidKey | undefined> {
   try {
-    const db = await getDB();    const tx = db.transaction(dbSettings.KeyStore, 'readwrite');
+    const db = await getDB();    
+    const tx = db.transaction(dbSettings.KeyStore, 'readwrite');
     const store = tx.objectStore(dbSettings.KeyStore);
     const addResult = await store.put(inputValue, id);
     await tx.done;
