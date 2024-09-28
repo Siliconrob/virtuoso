@@ -15,7 +15,7 @@
 export class PagedResult {
   //items: Array<ItemDetails> = new Array<ItemDetails>();
   ids: Array<number> = new Array<number>();
-  itemsPerPage: number = 5;
+  itemsPerPage: number = import.meta.env.VITE_APP_NODE_ITEMS_PER_PAGE || 5;
   currentPage: number = 1;
 }
 
