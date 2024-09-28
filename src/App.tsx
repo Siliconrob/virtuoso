@@ -6,15 +6,13 @@ import SearchResult from "./SearchResult.tsx";
 import {APISearchSummary} from "./PagedResults.ts";
 import {getDateOnly, isProduction, submitSearch} from "./Search.ts";
 
-const oneDay: number = (24 * 60) * (60 * 1000);
-const daysInRange: number = 90;
-
 const allowedDateRange = {
-  min: subtractDays(daysInRange),
+  min: subtractDays(import.meta.env.VITE_APP_DAYS_IN_RANGE || 90),
   max: subtractDays(-1)
 };
 
 function subtractDays(days: number = 7): Date {
+  const oneDay: number = (24 * 60) * (60 * 1000);
   const startDate = new Date();
   const milliseconds = days * oneDay;
   // @ts-ignore

@@ -24,6 +24,7 @@ This project was built using the default Vite React template.
 ```
 VITE_APP_NODE_ENV=<fill in a value other than production for testing>
 VITE_APP_NODE_ITEMS_PER_PAGE=<number of items per page, 5 is default if left blank>
+VITE_APP_DAYS_IN_RANGE=<number of days available to search, 90 is default if left blank>
 ``` 
 - [Node.js](https://nodejs.org/en/about/) Please install at least Node.js version `v22.1.0` and `npm`.
 - Run `npm install` to initialize all the dependencies
