@@ -1,4 +1,4 @@
-﻿import { openDB, deleteDB } from 'idb';
+﻿import {deleteDB, IDBPDatabase, openDB} from 'idb';
 
 export const dbSettings = Object.freeze({
   Version: 1,
@@ -6,14 +6,17 @@ export const dbSettings = Object.freeze({
   KeyStore: "actions"
 });
 
+async function getDB() : Promise<IDBPDatabase<unknown>>    {
+  return await openDB(dbSettings.Name, dbSettings.Version, {
+    upgrade(db) {
+      db.createObjectStore(dbSettings.KeyStore, {autoIncrement: true});
+    }
+  });
+}
+
 export async function save(inputValue: unknown, id: number) : Promise<IDBValidKey | undefined> {
   try {
-    const db = await openDB(dbSettings.Name, dbSettings.Version, {
-      upgrade(db) {
-        db.createObjectStore(dbSettings.KeyStore, {autoIncrement: true});
-      }
-    });
-    const tx = db.transaction(dbSettings.KeyStore, 'readwrite');
+    const db = await getDB();    const tx = db.transaction(dbSettings.KeyStore, 'readwrite');
     const store = tx.objectStore(dbSettings.KeyStore);
     const addResult = await store.put(inputValue, id);
     await tx.done;
@@ -22,15 +25,12 @@ export async function save(inputValue: unknown, id: number) : Promise<IDBValidKe
   } catch (exc) {
     console.trace(`Failed dataStore.save ${exc}`);
   }
+  return undefined;
 }
 
 export async function get(id: number) : Promise<unknown> {
   try {
-    const db = await openDB(dbSettings.Name, dbSettings.Version, {
-      upgrade(db) {
-        db.createObjectStore(dbSettings.KeyStore, {autoIncrement: true});
-      }
-    });
+    const db = await getDB();
     const tx = db.transaction(dbSettings.KeyStore, 'readonly');
     const store = tx.objectStore(dbSettings.KeyStore);
     const findResult = await store.get(id);
@@ -40,6 +40,7 @@ export async function get(id: number) : Promise<unknown> {
   } catch (exc) {
     console.trace(`Failed dataStore.get ${exc}`);
   }
+  return null;
 }
 
 export async function initializeCache(): Promise<void> {
