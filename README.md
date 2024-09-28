@@ -6,7 +6,7 @@ Welcome to this sample application that leverages the API endpoints against [The
 
 ## Demo use
 
-![react_app_viewer](https://github.com/user-attachments/assets/cc5e677f-abe8-4aad-8ceb-1f41fa4f9794)
+![react_app_viewer](https://github.com/user-attachments/assets/a8bc7230-bf48-4a1f-852e-8002ec15ee79)
 
 ## Flow
 
