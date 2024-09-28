@@ -7,11 +7,11 @@ import {APISearchSummary} from "./PagedResults.ts";
 import {getDateOnly, isProduction, submitSearch} from "./Search.ts";
 
 const oneDay: number = (24 * 60) * (60 * 1000);
-const daysInYear: number = 365;
+const daysInRange: number = 90;
 
 const allowedDateRange = {
-  min: subtractDays(daysInYear),
-  max: subtractDays(daysInYear * -1)
+  min: subtractDays(daysInRange),
+  max: subtractDays(-1)
 };
 
 function subtractDays(days: number = 7): Date {
