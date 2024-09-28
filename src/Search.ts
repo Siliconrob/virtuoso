@@ -61,8 +61,8 @@ export async function submitSearch(modified: Date, testMode: boolean = false) : 
   return await response.json();
 }
 
-export function getDateOnly(inputDate: Date) : string | undefined | null {
+export function getDateOnly(inputDate: Date) : string | undefined | number {
   return inputDate != null
     ? inputDate.toISOString().split("T").shift()
-    : null;
+    : "";
 }

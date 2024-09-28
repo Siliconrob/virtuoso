@@ -6,15 +6,23 @@ import SearchResult from "./SearchResult.tsx";
 import {APISearchSummary} from "./PagedResults.ts";
 import {getDateOnly, isProduction, submitSearch} from "./Search.ts";
 
-function defaultDate() {
+const oneDay: number = (24 * 60) * (60 * 1000);
+const daysInYear: number = 365;
+
+const allowedDateRange = {
+  min: subtractDays(daysInYear),
+  max: subtractDays(daysInYear * -1)
+};
+
+function subtractDays(days: number = 7): Date {
   const startDate = new Date();
-  const milliseconds = 7 * (24 * 60) * (60 * 1000);
+  const milliseconds = days * oneDay;
   // @ts-ignore
-  return new Date(startDate - milliseconds);
+  return new Date(startDate - milliseconds);  
 }
 
 function App() {
-  const [modifiedDate, setModifiedDate] = useState(defaultDate())
+  const [modifiedDate, setModifiedDate] = useState(subtractDays(7))
   const [searchResults, setSearchResults] = useState(new APISearchSummary())
 
   useEffect(() => {
@@ -42,6 +50,13 @@ function App() {
   if (searchResults.objectIDs.length === 0) {
     return (<>
       <h1>Loading...</h1>
+      <button className="pad-items" onClick={async () => {
+        const newDate = subtractDays();
+        const details = await getSearchResults(newDate);
+        setModifiedDate(newDate);
+        setSearchResults(details);
+      }}>Reset
+      </button>
     </>);
   } else {
     return (
@@ -50,8 +65,16 @@ function App() {
         <h1>Metropolitan Museum of Art Viewer</h1>
         <div className="row">
           <label htmlFor="modifiedFilter">Changed after</label>
-          <input id="modifiedFilter" type="date" value={getDateOnly(modifiedDate) as string} onChange={async (e) => {
+          <input id="modifiedFilter" min={getDateOnly(allowedDateRange.min)} max={getDateOnly(allowedDateRange.max)} type="date" value={getDateOnly(modifiedDate) as string} onChange={async (e) => {
             const newDate = new Date(e.target.value as unknown as string);
+            if (newDate < allowedDateRange.min ) {
+              toast.error(`Date must be after ${getDateOnly(allowedDateRange.min)}`);
+              return;
+            }
+            if (newDate > allowedDateRange.max ) {
+              toast.error(`Date must be before ${getDateOnly(allowedDateRange.max)}`);
+              return;
+            }
             const details = await getSearchResults(newDate);
             setModifiedDate(newDate);
             setSearchResults(details);
