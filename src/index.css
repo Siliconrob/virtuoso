@@ -62,7 +62,7 @@ button, input:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  button, label, input {
     background-color: #f9f9f9;
   }
 }
