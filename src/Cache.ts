@@ -14,7 +14,7 @@ async function getDB() : Promise<IDBPDatabase<unknown>>    {
   });
 }
 
-export async function save(inputValue: unknown, id: number) : Promise<IDBValidKey | undefined> {
+export async function set(inputValue: unknown, id: number) : Promise<IDBValidKey | undefined> {
   try {
     const db = await getDB();    
     const tx = db.transaction(dbSettings.KeyStore, 'readwrite');
@@ -24,7 +24,7 @@ export async function save(inputValue: unknown, id: number) : Promise<IDBValidKe
     db.close();
     return addResult;
   } catch (exc) {
-    console.trace(`Failed dataStore.save ${exc}`);
+    console.trace(`Failed dataStore.set ${exc}`);
   }
   return undefined;
 }

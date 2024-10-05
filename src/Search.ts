@@ -1,7 +1,7 @@
 ﻿import {APISearchSummary, ItemDetails } from "./PagedResults.ts";
 // @ts-ignore
 import testValues from "../test/data";
-import {get, save} from "./Cache.ts";
+import {get, set} from "./Cache.ts";
 
 const API_V1_BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects";
 
@@ -23,7 +23,7 @@ export async function getItemDetails(objectId: number, testMode: boolean = false
   const response = await fetch(`${API_V1_BASE_URL}/${objectId}`, {signal: requestSignal});
   const itemData = await response.json();
   const newItem: ItemDetails = {...itemData};
-  await save(newItem, objectId);
+  await set(newItem, objectId);
   return newItem;
 }
 
