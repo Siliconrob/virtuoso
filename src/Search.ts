@@ -23,7 +23,7 @@ export async function getItemDetails(objectId: number, testMode: boolean = false
   const response = await fetch(`${API_V1_BASE_URL}/${objectId}`, {signal: requestSignal});
   const itemData = await response.json();
   const newItem: ItemDetails = {...itemData};
-  await set(newItem, objectId);
+  await set(objectId, newItem);
   return newItem;
 }
 
